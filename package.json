@@ -1,0 +1,30 @@
+{
+  "name": "phonebook",
+  "version": "1.0.0",
+  "description": "fullstackopen part3 exercise",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngntrung/fullstackopen2020-part3.git"
+  },
+  "keywords": [
+    "fullstackopen2020part3"
+  ],
+  "author": "Trung Nguyen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngntrung/fullstackopen2020-part3/issues"
+  },
+  "homepage": "https://github.com/ngntrung/fullstackopen2020-part3#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
