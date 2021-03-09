@@ -7,7 +7,7 @@ app.use(cors())
 app.use(express.json())
 morgan.token('content', function (req, res) {return JSON.stringify(req.body)})
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :content'))
-
+app.get('/favicon.ico', (req, res) => res.status(204));
 let persons = [
     {
       "name": "Arto Hellas",
@@ -86,7 +86,7 @@ app.post('/api/persons', (request, response) => {
     response.json(persons)
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 })
