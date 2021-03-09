@@ -8,6 +8,8 @@ app.use(express.json())
 morgan.token('content', function (req, res) {return JSON.stringify(req.body)})
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :content'))
 app.get('/favicon.ico', (req, res) => res.status(204));
+app.use(express.static('build'))
+
 let persons = [
     {
       "name": "Arto Hellas",
