@@ -34,10 +34,12 @@ app.get('/api/persons/:id', (request, response) => {
     })
 })
 
-app.delete('/api/persons/:id', (request, response) => {
-    const id = Number(request.params.id)
-    persons = persons.filter(person => person.id !== id)
-    response.status(204).end()
+app.delete('/api/persons/:id', (request, response, next) => {
+    Person.findByIdAndRemove(request.params.id)
+    .then(result => {
+        response.status(204).end()
+    })
+    .catch(error => next(error))
 })
 
 app.post('/api/persons', (request, response) => {
@@ -49,15 +51,26 @@ app.post('/api/persons', (request, response) => {
         })
     }
 
-    const person = new Person({
-        name: body.name,
-        number: body.number,
-    })
-
-    person.save().then(savedPerson => {
-        response.json(savedPerson)
-    })
-    
+    Person.find({name: body.name})
+        .then(result => {
+            if (Object.keys(result).length !== 0) {
+                return response.json({
+                    error: 'name must be unique'
+                })
+            } else {
+                const person = new Person({
+                    name: body.name,
+                    number: body.number,
+                })
+                person.save().then(savedPerson => {
+                    response.json(savedPerson)
+                })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+            response.status(400).send({error: 'something went wrong'})
+        })
 })
 
 const PORT = process.env.PORT
