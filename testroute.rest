@@ -6,6 +6,16 @@ POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
+    "name": "Ron",
+    "number": "040-000-0000-000"
+}
+###
+POST https://secret-forest-96399.herokuapp.com/api/persons
+Content-Type: application/json
+
+{
     "name": "Harry Potter ",
     "number": "040-000-0000-000"
 }
+###
+GET http://localhost:3001/api/persons/1
