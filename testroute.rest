@@ -18,4 +18,4 @@ Content-Type: application/json
     "number": "040-000-0000-000"
 }
 ###
-GET http://localhost:3001/api/persons/1
+GET http://localhost:3001/api/persons/6048a19f904ecd701c8f199f/
